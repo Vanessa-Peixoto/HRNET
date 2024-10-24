@@ -5,8 +5,8 @@ function InputSelect({ label, options, value, onChange }: InputSelectProps) {
       <select value={value} onChange={onChange}>
         <option value="">Selectionner</option>
         {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+          <option key={index} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>
@@ -16,7 +16,7 @@ function InputSelect({ label, options, value, onChange }: InputSelectProps) {
 
 interface InputSelectProps {
   label: string;
-  options: [];
+  options: { label: string; value: string }[];
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

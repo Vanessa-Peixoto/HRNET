@@ -1,6 +1,12 @@
-import InputDatePicker from "../../component/InputDatePicker";
+import EmployeeForm from "../../component/Form/EmployeeForm";
+
+
+
 
 function CreateEmployee() {
+
+
+
     return(
         <>
             <header>
@@ -10,7 +16,7 @@ function CreateEmployee() {
 
             <main>
             <h2>Create Employee</h2>
-            <InputDatePicker label="Date de naissance"/>
+            <EmployeeForm/>
             </main>
             
         </>

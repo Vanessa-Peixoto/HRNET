@@ -1,20 +1,21 @@
-import { useState } from "react";
+
 import DatePicker from "react-datepicker" ;
 import "react-datepicker/dist/react-datepicker.css";
 
-function InputDatePicker({ label } : InputDatePicker) {
+function InputDatePicker({ label, value, onChange } : InputDatePicker) {
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
     return(
         <div>
             <label>{label}</label>
-            <DatePicker selected={startDate} onChange={(date: Date | null) => setStartDate(date)} isClearable dateFormat="MM/dd/yyyy"/>
+            <DatePicker selected={value} onChange={onChange} isClearable dateFormat="MM/dd/yyyy"/>
         </div>
     )
 }
 
 interface InputDatePicker {
     label: string;
+    value: Date | null;
+    onChange: (date: Date | null) => void;
 }
 
 export default InputDatePicker;

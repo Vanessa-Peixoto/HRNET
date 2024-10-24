@@ -1,7 +1,7 @@
 
-function Button({ type, children, onClick} : ButtonProps) {
+function Button({ type, children} : ButtonProps) {
     return(
-        <button type={type} onClick={onClick}>
+        <button type={type}>
             {children}
         </button>
     )
@@ -10,7 +10,6 @@ function Button({ type, children, onClick} : ButtonProps) {
 interface ButtonProps {
     type: "submit";
     children: React.ReactNode;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default Button;

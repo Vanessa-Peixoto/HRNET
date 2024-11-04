@@ -44,6 +44,7 @@ const formSlice = createSlice({
         updateDepartment: (state, action) => {
             state.department = action.payload;
         },
+        resetForm: () => initialState
     }
 })
 
@@ -60,4 +61,4 @@ interface FormProps {
 }
 
 export default formSlice.reducer;
-export const {updateFirstname, updateLastname, updateDateOfBirth, updateStartDate, updateStreet, updateCity, updateState, updateZipCode, updateDepartment} = formSlice.actions;
+export const {updateFirstname, updateLastname, updateDateOfBirth, updateStartDate, updateStreet, updateCity, updateState, updateZipCode, updateDepartment, resetForm} = formSlice.actions;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { addEmployee } from '../features/employeeSlice';
 import { useDispatch } from 'react-redux';
 import { format } from 'date-fns';
+import { resetForm } from '../features/formSlice';
 
 function useForm() {
 
@@ -76,6 +77,7 @@ function useForm() {
         };
 
         dispatch(addEmployee(newEmployee));
+        dispatch(resetForm());
 
     };
 

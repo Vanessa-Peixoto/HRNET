@@ -1,4 +1,5 @@
 import EmployeeForm from "../../component/Form/EmployeeForm";
+import EmployeeTab from "../../component/Table/EmployeeTab";
 
 
 
@@ -17,6 +18,7 @@ function CreateEmployee() {
             <main>
             <h2>Create Employee</h2>
             <EmployeeForm/>
+            <EmployeeTab/>
             </main>
             
         </>

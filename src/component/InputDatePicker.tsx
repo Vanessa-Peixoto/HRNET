@@ -1,6 +1,7 @@
 
 import DatePicker from "react-datepicker" ;
 import "react-datepicker/dist/react-datepicker.css";
+import './inputDatePicker.css';
 
 function InputDatePicker({ label, value, onChange } : InputDatePicker) {
 

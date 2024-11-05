@@ -1,4 +1,5 @@
 import { useState } from "react";
+import InputField from "./InputField";
 
 function SearchBar({ onSearch } : SearchBarProps) {
 
@@ -12,10 +13,14 @@ function SearchBar({ onSearch } : SearchBarProps) {
 
     return(
    
-            <form>
-                <label>Search</label>
-                <input type="text" value={query} onChange={handleChange}/>
-            </form>
+        <div className="mb-4">
+        <InputField
+          label="Search"
+          type="text"
+          value={query}
+          onChange={handleChange}
+        />
+      </div>
        
     )
 }

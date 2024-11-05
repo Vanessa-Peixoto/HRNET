@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+import EmployeeTab from "../../component/Table/EmployeeTab";
 
 function EmployeeList() {
     return(
-        <div></div>
+        <div>
+            <EmployeeTab/>
+            <Link to="/">Home</Link>
+        </div>
     )
 
 }

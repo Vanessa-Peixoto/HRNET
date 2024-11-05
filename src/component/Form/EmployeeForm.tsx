@@ -48,24 +48,27 @@ function EmployeeForm() {
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-6 max-w-lg mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <InputField label="First Name" type="text" value={formState.firstname} onChange={(e) => dispatch(updateFirstname(e.target.value))}/>
                     <InputField label="Last Name" type="text" value={formState.lastname} onChange={(e) => dispatch(updateLastname(e.target.value))}/>
                     <InputDatePicker label="Date of Birth" value={formState.dateOfBirth} onChange={(date) => dispatch(updateDateOfBirth(date))} />
                     <InputDatePicker label="Start Date"  value={formState.startDate} onChange={(date) => dispatch(updateStartDate(date))} />
                 </div>
-                <div>
-                    <legend>Adress</legend>
+            
+                    <fieldset className="border-t border-gray-200 mt-4 pt-4">
+                    <legend className="text-lg font-semibold text-gray-700">Adress</legend>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                     <InputField label="Street" type="text" value={formState.street} onChange={(e) => dispatch(updateStreet(e.target.value))}/>
                     <InputField label="City" type="text" value={formState.city} onChange={(e) => dispatch(updateCity(e.target.value))}/>
                     <InputSelect label="State" options={statesOptions} value={formState.state} onChange={(e) => dispatch(updateState(e.target.value))}/>
                     <InputField label="Zip Code" type="number" value={formState.zipCode} onChange={(e) => dispatch(updateZipCode(e.target.value))}/>
-                </div>
-                <div>
+                    </div>
+                    </fieldset>
+                <div className="mt-4">
                     <InputSelect label="Department" options={departmentsOptions} value={formState.department} onChange={(e) => dispatch(updateDepartment(e.target.value))}/>
                 </div>
-                <div>
+                <div className="text-center">
                 <Button type="submit">
                     Save
                 </Button>

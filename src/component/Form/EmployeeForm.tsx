@@ -25,7 +25,7 @@ function EmployeeForm() {
 
     const dispatch = useDispatch();
     const formState = useSelector((state: RootState) => state.form)
-    const { handleSubmitForm, clientsErrors } = useForm();
+    const { handleSubmitForm } = useForm();
 
     const statesOptions = getStateOptions();
     const departmentsOptions = getDepartmentOptions();
@@ -52,20 +52,19 @@ function EmployeeForm() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                     <InputField label="First Name" type="text" value={formState.firstname} onChange={(e) => dispatch(updateFirstname(e.target.value))}/>
-                    {clientsErrors.firstname && <p className="text-red-500 text-sm mt-1">{clientsErrors.firstname}</p>}
-
+                    
                     </div>
                     <div>
                     <InputField label="Last Name" type="text" value={formState.lastname} onChange={(e) => dispatch(updateLastname(e.target.value))}/>
-                    {clientsErrors.lastname && <p className="text-red-500 text-sm mt-1">{clientsErrors.lastname}</p>}
+                    
                     </div>
                     <div>
-                    <InputDatePicker label="Date of Birth" value={formState.dateOfBirth} onChange={(date) => dispatch(updateDateOfBirth(date))} />
-                    {clientsErrors.dateOfBirth && <p className="text-red-500 text-sm mt-1">{clientsErrors.dateOfBirth}</p>}
+                    <InputDatePicker label="Date of Birth" value={formState.dateOfBirth} onChange={(date) => dispatch(updateDateOfBirth(date?.toISOString()))} />
+
                     </div>
                     <div>
-                    <InputDatePicker label="Start Date"  value={formState.startDate} onChange={(date) => dispatch(updateStartDate(date))} />
-                    {clientsErrors.startDate && <p className="text-red-500 text-sm mt-1">{clientsErrors.startDate}</p>}
+                    <InputDatePicker label="Start Date"  value={formState.startDate} onChange={(date) => dispatch(updateStartDate(date?.toISOString()))} />
+    
                     </div>
                     
                 </div>
@@ -77,12 +76,11 @@ function EmployeeForm() {
                     <InputField label="City" type="text" value={formState.city} onChange={(e) => dispatch(updateCity(e.target.value))}/>
                     <InputSelect label="State" options={statesOptions} value={formState.state} onChange={(e) => dispatch(updateState(e.target.value))}/>
                     <InputField label="Zip Code" type="number" value={formState.zipCode} onChange={(e) => dispatch(updateZipCode(e.target.value))}/>
-                    {clientsErrors.street && <p className="text-red-500 text-sm mt-1">{clientsErrors.street}</p>}
+
                     </div>
                     </fieldset>
                 <div className="mt-4">
                     <InputSelect label="Department" options={departmentsOptions} value={formState.department} onChange={(e) => dispatch(updateDepartment(e.target.value))}/>
-                    {clientsErrors.department && <p className="text-red-500 text-sm mt-1">{clientsErrors.department}</p>}
                 </div>
                 <div className="text-center">
                 <Button type="submit">

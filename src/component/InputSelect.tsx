@@ -5,8 +5,10 @@ function InputSelect({ label, options, value, onChange }: InputSelectProps) {
       <select
         value={value}
         onChange={onChange}
+        required
         className="p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
       >
+        <option value=""></option>
         {options.map((option, index) => (
           <option key={index} value={option.value}>
             {option.label}

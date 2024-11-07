@@ -7,6 +7,7 @@ import { Employee } from "../../features/employeeSlice";
 import InputSelect from "../InputSelect";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { format } from "date-fns";
 
 function EmployeeTab() {
   const employees = useSelector((state: RootState) => state.employee.employee);
@@ -126,9 +127,9 @@ function EmployeeTab() {
               >
                 <td>{employee.firstname}</td>
                 <td>{employee.lastname}</td>
-                <td>{employee.startDate}</td>
+                <td>{format(employee.startDate, 'MM-dd-yyyy')}</td>
                 <td>{employee.department}</td>
-                <td>{employee.dateOfBirth}</td>
+                <td>{format(employee.dateOfBirth, 'MM-dd-yyyy')}</td>
                 <td>{employee.street}</td>
                 <td>{employee.city}</td>
                 <td>{employee.state}</td>

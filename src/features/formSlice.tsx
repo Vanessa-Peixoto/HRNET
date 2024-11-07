@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { format } from 'date-fns';
 
 const initialState : FormProps = {
     firstname: '',
@@ -24,10 +23,10 @@ const formSlice = createSlice({
             state.lastname = action.payload;
         },
         updateDateOfBirth: (state, action) => {
-            state.dateOfBirth = action.payload ? format(action.payload, 'MM/dd/yyyy') : '';;
+            state.dateOfBirth = action.payload;
         },
         updateStartDate: (state, action) => {
-            state.startDate = action.payload ? format(action.payload, 'MM/dd/yyyy') : '';;
+            state.startDate = action.payload;
         },
         updateStreet: (state, action) => {
             state.street = action.payload;

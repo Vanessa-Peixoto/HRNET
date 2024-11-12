@@ -5,11 +5,11 @@ import './modalwrapper.css';
 function ModalWrapper({ message, onClose, isOpen }: ModalWrapperProps) {
   if (!isOpen) return null;
 
-  return createPortal (
-    <div className="modal-overlay">
+  return(
+    
       <Modal message={message} onClose={onClose} isOpen={isOpen} />
-    </div>,
-    document.body
+
+  
   );
 }
 

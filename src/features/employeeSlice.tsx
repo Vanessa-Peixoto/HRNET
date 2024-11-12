@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import employeeData from '../data/employee.json';
 
 const initialState: EmployeeProps = {
-  employee: [],
+  employee: employeeData,
 };
 
 const employeeSlice = createSlice({

@@ -119,7 +119,7 @@ function EmployeeTab() {
                 </tr>
             </thead>
 
-          <tbody className="text-gray-700 text-sm">
+          <tbody className="text-gray-700 text-sm text-center">
             {sortedEmployees.map((employee, index) => (
               <tr
                 key={index}

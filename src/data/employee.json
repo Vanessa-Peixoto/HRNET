@@ -1,0 +1,223 @@
+[
+    {
+      "firstname": "Alice",
+      "lastname": "Martin",
+      "dateOfBirth": "1986-08-15",
+      "startDate": "2019-02-10",
+      "street": "123 Maple St",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zipCode": "85001",
+      "department": "Engineering"
+    },
+    {
+      "firstname": "Bob",
+      "lastname": "Dupont",
+      "dateOfBirth": "1990-03-05",
+      "startDate": "2020-07-23",
+      "street": "456 Oak St",
+      "city": "Austin",
+      "state": "TX",
+      "zipCode": "73301",
+      "department": "Sales"
+    },
+    {
+      "firstname": "Claire",
+      "lastname": "Dubois",
+      "dateOfBirth": "1978-11-21",
+      "startDate": "2017-10-03",
+      "street": "789 Birch Ln",
+      "city": "Denver",
+      "state": "CO",
+      "zipCode": "80203",
+      "department": "Marketing"
+    },
+    {
+      "firstname": "Daniel",
+      "lastname": "Lemoine",
+      "dateOfBirth": "1983-06-11",
+      "startDate": "2021-06-01",
+      "street": "101 Pine St",
+      "city": "Orlando",
+      "state": "FL",
+      "zipCode": "32801",
+      "department": "Human Resources"
+    },
+    {
+      "firstname": "Emma",
+      "lastname": "Renard",
+      "dateOfBirth": "1995-01-30",
+      "startDate": "2018-04-15",
+      "street": "202 Cedar St",
+      "city": "Seattle",
+      "state": "WA",
+      "zipCode": "98101",
+      "department": "Legal"
+    },
+    {
+      "firstname": "Frederic",
+      "lastname": "Carpentier",
+      "dateOfBirth": "1987-04-22",
+      "startDate": "2020-09-15",
+      "street": "303 Willow Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "zipCode": "60601",
+      "department": "Engineering"
+    },
+    {
+      "firstname": "Georgia",
+      "lastname": "Benoit",
+      "dateOfBirth": "1982-10-19",
+      "startDate": "2016-11-29",
+      "street": "404 Elm St",
+      "city": "Boston",
+      "state": "MA",
+      "zipCode": "02108",
+      "department": "Sales"
+    },
+    {
+      "firstname": "Henry",
+      "lastname": "Leclerc",
+      "dateOfBirth": "1979-07-14",
+      "startDate": "2015-12-12",
+      "street": "505 Ash St",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001",
+      "department": "Marketing"
+    },
+    {
+      "firstname": "Isabelle",
+      "lastname": "Mercier",
+      "dateOfBirth": "1992-09-18",
+      "startDate": "2019-03-19",
+      "street": "606 Beech Ave",
+      "city": "San Francisco",
+      "state": "CA",
+      "zipCode": "94102",
+      "department": "Legal"
+    },
+    {
+      "firstname": "Jack",
+      "lastname": "Moreau",
+      "dateOfBirth": "1985-11-23",
+      "startDate": "2017-01-30",
+      "street": "707 Cypress St",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zipCode": "90001",
+      "department": "Human Resources"
+    },
+    {
+      "firstname": "Katherine",
+      "lastname": "Petit",
+      "dateOfBirth": "1988-06-09",
+      "startDate": "2021-05-25",
+      "street": "808 Poplar St",
+      "city": "Portland",
+      "state": "OR",
+      "zipCode": "97201",
+      "department": "Engineering"
+    },
+    {
+      "firstname": "Louis",
+      "lastname": "Giraud",
+      "dateOfBirth": "1993-12-10",
+      "startDate": "2022-07-02",
+      "street": "909 Spruce St",
+      "city": "Houston",
+      "state": "TX",
+      "zipCode": "77001",
+      "department": "Sales"
+    },
+    {
+      "firstname": "Marie",
+      "lastname": "Leroy",
+      "dateOfBirth": "1984-05-25",
+      "startDate": "2018-08-16",
+      "street": "1010 Maple St",
+      "city": "Philadelphia",
+      "state": "PA",
+      "zipCode": "19107",
+      "department": "Marketing"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname": "Bertrand",
+      "dateOfBirth": "1976-03-01",
+      "startDate": "2014-04-10",
+      "street": "1111 Cherry St",
+      "city": "Miami",
+      "state": "FL",
+      "zipCode": "33101",
+      "department": "Legal"
+    },
+    {
+      "firstname": "Olivia",
+      "lastname": "Dupuis",
+      "dateOfBirth": "1991-08-07",
+      "startDate": "2020-02-14",
+      "street": "1212 Palm St",
+      "city": "Atlanta",
+      "state": "GA",
+      "zipCode": "30301",
+      "department": "Engineering"
+    },
+    {
+      "firstname": "Pierre",
+      "lastname": "Fontaine",
+      "dateOfBirth": "1989-10-29",
+      "startDate": "2019-12-05",
+      "street": "1313 Walnut St",
+      "city": "Dallas",
+      "state": "TX",
+      "zipCode": "75201",
+      "department": "Human Resources"
+    },
+    {
+      "firstname": "Quentin",
+      "lastname": "Dubos",
+      "dateOfBirth": "1983-02-14",
+      "startDate": "2017-11-17",
+      "street": "1414 Fir St",
+      "city": "Charlotte",
+      "state": "NC",
+      "zipCode": "28202",
+      "department": "Sales"
+    },
+    {
+      "firstname": "Renee",
+      "lastname": "Lambert",
+      "dateOfBirth": "1994-07-22",
+      "startDate": "2021-09-08",
+      "street": "1515 Cedar St",
+      "city": "San Diego",
+      "state": "CA",
+      "zipCode": "92101",
+      "department": "Marketing"
+    },
+    {
+      "firstname": "Simon",
+      "lastname": "Rousseau",
+      "dateOfBirth": "1982-04-19",
+      "startDate": "2016-06-22",
+      "street": "1616 Olive St",
+      "city": "Las Vegas",
+      "state": "NV",
+      "zipCode": "89101",
+      "department": "Legal"
+    },
+    {
+      "firstname": "Therese",
+      "lastname": "Legrand",
+      "dateOfBirth": "1996-11-11",
+      "startDate": "2022-01-20",
+      "street": "1717 Mulberry St",
+      "city": "Nashville",
+      "state": "TN",
+      "zipCode": "37201",
+      "department": "Engineering"
+    }
+  ]
+  

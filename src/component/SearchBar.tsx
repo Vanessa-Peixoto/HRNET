@@ -19,6 +19,7 @@ function SearchBar({ onSearch } : SearchBarProps) {
           type="text"
           value={query}
           onChange={handleChange}
+          id="search"
         />
       </div>
        

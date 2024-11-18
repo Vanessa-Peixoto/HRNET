@@ -1,11 +1,12 @@
-function InputSelect({ label, options, value, onChange }: InputSelectProps) {
+function InputSelect({ label, options, value, onChange, id }: InputSelectProps) {
   return (
     <div className="flex flex-col">
-      <label className="text-gray-600 font-medium mb-1">{label}</label>
+      <label className="text-gray-600 font-medium mb-1" htmlFor={id}>{label}</label>
       <select
         value={value}
         onChange={onChange}
         required
+        id={id}
         className="p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
       >
         <option value=""></option>
@@ -24,6 +25,7 @@ interface InputSelectProps {
   options: { label: string; value: string }[];
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  id: string;
 }
 
 export default InputSelect;

@@ -1,5 +1,4 @@
 import { Modal } from "@vanessapeixoto/my-modal";
-import { createPortal } from "react-dom";
 import './modalwrapper.css';
 
 function ModalWrapper({ message, onClose, isOpen }: ModalWrapperProps) {

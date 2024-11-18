@@ -1,50 +1,23 @@
-import { useSelector } from "react-redux";
 import { useState } from "react";
-import { RootState } from "../../app/store";
-import Pagination from "../Pagination";
-import SearchBar from "../SearchBar";
 import { Employee } from "../../features/employeeSlice";
-import InputSelect from "../InputSelect";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSort,
+  faSortUp,
+  faSortDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
 
-function EmployeeTab() {
-  const employees = useSelector((state: RootState) => state.employee.employee);
+function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [entriesPerPage, setEntriesPerPage] = useState(10);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const handleEntriesPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setEntriesPerPage(Number(event.target.value));
-    setCurrentPage(1); // Réinitialiser à la première page lors du changement du nombre d'entrées par page
-  };
-
-  const startIndex = (currentPage - 1) * entriesPerPage;
-  const currentEmployees = employees.slice(
-    startIndex,
-    startIndex + entriesPerPage
-  );
-
-  const entriesOptions = [
-    { label: "10", value: "10" },
-    { label: "25", value: "20" },
-    { label: "50", value: "50" },
-    { label: "100", value: "100" },
-  ];
-
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'ascending' | 'descending' | null }>({
-        key: 'firstname', // Initialiser avec une colonne par défaut
-        direction: 'ascending', // Direction par défaut
-    });
+// 1. Gérer la configuration du tri (ne pas réinitialiser au rendu)
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: "ascending" | "descending" | null;
+  }>({
+    key: "firstname", // Initialiser avec une colonne par défaut
+    direction: "ascending", // Direction par défaut
+  });
 
   // Filtrer par recherche
   const filteredEmployees = currentEmployees.filter((employee) => {
@@ -60,64 +33,70 @@ function EmployeeTab() {
     );
   });
 
+  // 3. Fonction de tri
+  const requestSort = (key: keyof Employee) => {
+    let direction: "ascending" | "descending" | null = "ascending";
+
+    // Si la colonne cliquée est déjà triée, inverser la direction
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
+    } else if (sortConfig.key === key && sortConfig.direction === "descending") {
+      direction = null; // Réinitialiser si on clique sur la même colonne
+    }
+
+    // Mettre à jour la configuration du tri
+    setSortConfig({ key, direction });
+  };
+
   // Appliquer le tri
   const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     if (sortConfig.direction === null) return 0;
 
-        const aValue = a[sortConfig.key as keyof Employee];
-        const bValue = b[sortConfig.key as keyof Employee];
+    const aValue = a[sortConfig.key as keyof Employee];
+    const bValue = b[sortConfig.key as keyof Employee];
 
-        if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
-        if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
-        return 0;
-    });
-
-
-  const requestSort = (key: keyof Employee) => {
-    let direction: "ascending" | "descending" | null = "ascending";
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-            direction = 'descending';
-        } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
-            direction = null; // Reset si la colonne est cliquée à nouveau
-        }
-
-        setSortConfig({ key, direction });
-  };
+    if (aValue < bValue) return sortConfig.direction === "ascending" ? -1 : 1;
+    if (aValue > bValue) return sortConfig.direction === "ascending" ? 1 : -1;
+    return 0;
+  });
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex justify-between items-center mt-8 p-4">
-        <div className="flex">
-        <InputSelect
-          label="Show"
-          options={entriesOptions}
-          value={String(entriesPerPage)}
-          onChange={handleEntriesPerPageChange}
-        />
-        <span>entries</span>
-        </div>
-       
-        <SearchBar onSearch={setSearchQuery} />
-      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg mt-4">
-        <thead>
-                <tr className="bg-gray-100 text-gray-600  text-sm leading-normal">
-                    {['firstname', 'lastname', 'startDate', 'department', 'dateOfBirth', 'street', 'city', 'state', 'zipCode'].map((column) => (
-                        <th
-                            key={column}
-                            onClick={() => requestSort(column as keyof Employee)}
-                            className="cursor-pointer py-3 px-6 text-left"
-                        >
-                            {column.charAt(0).toUpperCase() + column.slice(1)}
-                            <FontAwesomeIcon
-                                icon={sortConfig.key === column ? (sortConfig.direction === 'ascending' ? faSortUp : faSortDown) : faSort}
-                                className="ml-2"
-                            />
-                        </th>
-                    ))}
-                </tr>
-            </thead>
+          <thead>
+            <tr className="bg-gray-100 text-gray-600  text-sm leading-normal">
+              {[
+                "firstname",
+                "lastname",
+                "startDate",
+                "department",
+                "dateOfBirth",
+                "street",
+                "city",
+                "state",
+                "zipCode",
+              ].map((column) => (
+                <th
+                  key={column}
+                  onClick={() => requestSort(column as keyof Employee)}
+                  className="cursor-pointer py-3 px-6 text-left"
+                >
+                  {column.charAt(0).toUpperCase() + column.slice(1)}
+                  <FontAwesomeIcon
+                    icon={
+                      sortConfig.key === column
+                        ? sortConfig.direction === "ascending"
+                          ? faSortUp
+                          : faSortDown
+                        : faSort
+                    }
+                    className="ml-2"
+                  />
+                </th>
+              ))}
+            </tr>
+          </thead>
 
           <tbody className="text-gray-700 text-sm text-center">
             {sortedEmployees.map((employee, index) => (
@@ -127,9 +106,9 @@ function EmployeeTab() {
               >
                 <td>{employee.firstname}</td>
                 <td>{employee.lastname}</td>
-                <td>{format(employee.startDate, 'MM-dd-yyyy')}</td>
+                <td>{format(employee.startDate, "MM-dd-yyyy")}</td>
                 <td>{employee.department}</td>
-                <td>{format(employee.dateOfBirth, 'MM-dd-yyyy')}</td>
+                <td>{format(employee.dateOfBirth, "MM-dd-yyyy")}</td>
                 <td>{employee.street}</td>
                 <td>{employee.city}</td>
                 <td>{employee.state}</td>
@@ -139,14 +118,13 @@ function EmployeeTab() {
           </tbody>
         </table>
       </div>
-      <Pagination
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-        totalEntries={employees.length}
-        entriesPerPage={entriesPerPage}
-      />
     </div>
   );
+}
+
+interface EmployeeTabProps {
+  searchQuery: string;
+  currentEmployees: Employee[]
 }
 
 export default EmployeeTab;

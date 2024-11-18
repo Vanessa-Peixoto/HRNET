@@ -18,15 +18,11 @@ import { getStateOptions } from "../../services/getStateOptions";
 import { getDepartmentOptions } from "../../services/getDepartmentOptions";
 import { RootState } from "../../app/store";
 import useForm from "../../hooks/useForm";
-import { useState } from "react";
-import ModalWrapper from "../ModalWrapper";
 
-function EmployeeForm() {
+function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
   const dispatch = useDispatch();
   const formState = useSelector((state: RootState) => state.form);
   const { handleSubmitForm } = useForm();
-
-  const [showModal, setShowModal] = useState(true);
 
   const statesOptions = getStateOptions();
   const departmentsOptions = getDepartmentOptions();
@@ -46,18 +42,11 @@ function EmployeeForm() {
       formState.department
     );
 
-    setShowModal(true);
+    onFormSubmit();
   };
 
   return (
     <>
-      {showModal && (
-        <ModalWrapper
-          message="Employe crée"
-          onClose={() => setShowModal(false)}
-          isOpen={showModal}
-        />
-      )}
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-md space-y-6 max-w-lg mx-auto"
@@ -65,6 +54,7 @@ function EmployeeForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <InputField
+              id="firstname"
               label="First Name"
               type="text"
               value={formState.firstname}
@@ -73,6 +63,7 @@ function EmployeeForm() {
           </div>
           <div>
             <InputField
+              id="lastname"
               label="Last Name"
               type="text"
               value={formState.lastname}
@@ -81,6 +72,7 @@ function EmployeeForm() {
           </div>
           <div>
             <InputDatePicker
+              id="dateOfBirth"
               label="Date of Birth"
               value={formState.dateOfBirth}
               onChange={(date) =>
@@ -90,6 +82,7 @@ function EmployeeForm() {
           </div>
           <div>
             <InputDatePicker
+              id="startDate"
               label="Start Date"
               value={formState.startDate}
               onChange={(date) =>
@@ -105,12 +98,14 @@ function EmployeeForm() {
           </legend>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
             <InputField
+              id="street"
               label="Street"
               type="text"
               value={formState.street}
               onChange={(e) => dispatch(updateStreet(e.target.value))}
             />
             <InputField
+              id="city"
               label="City"
               type="text"
               value={formState.city}
@@ -121,8 +116,10 @@ function EmployeeForm() {
               options={statesOptions}
               value={formState.state}
               onChange={(e) => dispatch(updateState(e.target.value))}
+              id="state"
             />
             <InputField
+              id="zipCode"
               label="Zip Code"
               type="number"
               value={formState.zipCode}
@@ -136,6 +133,7 @@ function EmployeeForm() {
             options={departmentsOptions}
             value={formState.department}
             onChange={(e) => dispatch(updateDepartment(e.target.value))}
+            id="department"
           />
         </div>
         <div className="text-center">
@@ -144,6 +142,10 @@ function EmployeeForm() {
       </form>
     </>
   );
+}
+
+interface EmployeeFormProps {
+    onFormSubmit: () => void;
 }
 
 export default EmployeeForm;

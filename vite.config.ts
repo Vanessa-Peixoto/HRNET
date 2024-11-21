@@ -8,5 +8,10 @@ export default defineVitestConfig({
     globals: true,   // Permet d'utiliser des fonctions globales comme `describe`, `it`, etc.
     environment: 'jsdom', // Simule un environnement de navigateur (utile pour les tests de composants React)
     setupFiles: './src/setupTests.ts', // Si tu as un fichier de configuration global
+    server: {
+        deps: {
+        inline: ['@vanessapeixoto/my-modal'], // Force Vitest à inclure ce module
+      },
+    }
   },
 })

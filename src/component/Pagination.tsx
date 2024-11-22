@@ -11,7 +11,7 @@ function Pagination( {currentPage, onPageChange, totalEntries, entriesPerPage,} 
     const handleNext = () => onPageChange(currentPage + 1)
 
     return(
-        <div className="flex items-center justify-between p-4 bg-white border-t border-gray-200">
+        <div className="flex justify-between min-w-full p-4">
       {/* Affichage du nombre d'entrées */}
       <div className="text-gray-600">
         Showing <span className="font-semibold">{startEntry}</span> to{" "}
@@ -30,7 +30,7 @@ function Pagination( {currentPage, onPageChange, totalEntries, entriesPerPage,} 
         >
           Previous
         </button>
-        <span className="px-2 text-gray-700 font-semibold">{currentPage}</span>
+        <span className="px-2 text-gray-700 font-semibold flex items-center">{currentPage}</span>
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages}

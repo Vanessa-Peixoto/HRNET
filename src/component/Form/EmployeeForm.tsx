@@ -52,7 +52,7 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
         className="bg-white p-6 rounded-lg shadow-md space-y-6 max-w-lg mx-auto"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
+          
             <InputField
               id="firstname"
               label="First Name"
@@ -60,8 +60,8 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
               value={formState.firstname}
               onChange={(e) => dispatch(updateFirstname(e.target.value))}
             />
-          </div>
-          <div>
+         
+          
             <InputField
               id="lastname"
               label="Last Name"
@@ -69,8 +69,8 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
               value={formState.lastname}
               onChange={(e) => dispatch(updateLastname(e.target.value))}
             />
-          </div>
-          <div>
+          
+         
             <InputDatePicker
               id="dateOfBirth"
               label="Date of Birth"
@@ -79,8 +79,8 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
                 dispatch(updateDateOfBirth(date?.toISOString()))
               }
             />
-          </div>
-          <div>
+         
+        
             <InputDatePicker
               id="startDate"
               label="Start Date"
@@ -89,12 +89,12 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
                 dispatch(updateStartDate(date?.toISOString()))
               }
             />
-          </div>
+        
         </div>
 
         <fieldset className="border-t border-gray-200 mt-4 pt-4">
           <legend className="text-lg font-semibold text-gray-700">
-            Adress
+            Address
           </legend>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
             <InputField
@@ -127,7 +127,8 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
             />
           </div>
         </fieldset>
-        <div className="mt-4">
+        <fieldset className="border-t border-gray-200 mt-4 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
           <InputSelect
             label="Department"
             options={departmentsOptions}
@@ -136,6 +137,7 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
             id="department"
           />
         </div>
+        </fieldset>
         <div className="text-center">
           <Button type="submit">Save</Button>
         </div>

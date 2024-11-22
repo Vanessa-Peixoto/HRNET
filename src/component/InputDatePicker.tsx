@@ -8,7 +8,7 @@ function InputDatePicker({ label, value, onChange, id } : InputDatePicker) {
     const formattedDate = value ? new Date(value) : null;
 
     return(
-        <div className="flex flex-col">
+        <div>
             <label htmlFor={id} className="text-gray-600 font-medium mb-1">{label}</label>
             <DatePicker id={id} selected={formattedDate} onChange={onChange} required isClearable dateFormat="MM/dd/yyyy" className="p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"/>
         </div>

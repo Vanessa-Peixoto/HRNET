@@ -98,21 +98,21 @@ function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
             </tr>
           </thead>
 
-          <tbody className="text-gray-700 text-sm text-center">
+          <tbody className="text-gray-700 text-lg text-center">
             {sortedEmployees.map((employee, index) => (
               <tr
                 key={index}
                 className="border-b border-gray-200 hover:bg-gray-50"
               >
-                <td>{employee.firstname}</td>
-                <td>{employee.lastname}</td>
-                <td>{format(employee.startDate, "MM-dd-yyyy")}</td>
-                <td>{employee.department}</td>
-                <td>{format(employee.dateOfBirth, "MM-dd-yyyy")}</td>
-                <td>{employee.street}</td>
-                <td>{employee.city}</td>
-                <td>{employee.state}</td>
-                <td>{employee.zipCode}</td>
+                <td className="py-4 px-2">{employee.firstname}</td>
+                <td className="py-4 px-2">{employee.lastname}</td>
+                <td className="py-4 px-2">{format(employee.startDate, "MM-dd-yyyy")}</td>
+                <td className="py-4 px-2">{employee.department}</td>
+                <td className="py-4 px-2">{format(employee.dateOfBirth, "MM-dd-yyyy")}</td>
+                <td className="py-4 px-2">{employee.street}</td>
+                <td className="py-4 px-2">{employee.city}</td>
+                <td className="py-4 px-2">{employee.state}</td>
+                <td className="py-4 px-2">{employee.zipCode}</td>
               </tr>
             ))}
           </tbody>

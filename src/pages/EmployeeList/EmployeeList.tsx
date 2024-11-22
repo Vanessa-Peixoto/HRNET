@@ -58,7 +58,9 @@ function EmployeeList() {
 
       <main className="flex flex-col items-center mt-8 p-4">
         <h2 className="text-xl font-semibold mb-4">Current Employees</h2>
-        <div className="flex justify-between items-center mt-8 p-4">
+
+        <div className="container mx-auto px-4">
+        <div className="flex justify-between min-w-full p-4">
           <div className="flex">
             <InputSelect
               label="Show"
@@ -67,7 +69,7 @@ function EmployeeList() {
               onChange={handleEntriesPerPageChange}
               id="show"
             />
-            <span>entries</span>
+            <span className="flex items-center pl-2 text-gray-600">entries</span>
           </div>
 
           <SearchBar onSearch={setSearchQuery} />
@@ -84,6 +86,8 @@ function EmployeeList() {
           totalEntries={employees.length}
           entriesPerPage={entriesPerPage}
         />
+
+        </div>
       </main>
     </>
   );

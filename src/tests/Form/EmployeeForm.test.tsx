@@ -15,7 +15,6 @@ describe("EmployeeForm", () => {
   it("should render the form inputs and button", () => {
     renderEmployeeForm();
 
-    // Vérification de la présence des champs dans le formulaire
     expect(screen.getByLabelText(/First Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Last Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Date of Birth/i)).toBeInTheDocument();
@@ -31,12 +30,10 @@ describe("EmployeeForm", () => {
   it("should update firstname in the form state", () => {
     renderEmployeeForm();
 
-    // 3. Trouver le champ 'First Name' et le remplir
     fireEvent.change(screen.getByLabelText(/First Name/i), {
       target: { value: "John" },
     });
 
-    // 4. Vérifier si l'état Redux est mis à jour
     expect(screen.getByLabelText(/First Name/i)).toHaveValue("John");
   });
 

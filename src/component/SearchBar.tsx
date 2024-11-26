@@ -11,13 +11,13 @@ function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-      <InputField
-        label="Search"
-        type="text"
-        value={query}
-        onChange={handleChange}
-        id="search"
-      />
+    <InputField
+      label="Search"
+      type="text"
+      value={query}
+      onChange={handleChange}
+      id="search"
+    />
   );
 }
 

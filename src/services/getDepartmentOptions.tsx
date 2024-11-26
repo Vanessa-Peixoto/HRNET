@@ -1,8 +1,8 @@
-import departments from '../data/dataDepartment.json';
+import departments from "../data/dataDepartment.json";
 
 export const getDepartmentOptions = () => {
-    return departments.map((department: string) => ({
-        label: department,
-        value: department,
-    }));
+  return departments.map((department: string) => ({
+    label: department,
+    value: department,
+  }));
 };

@@ -1,7 +1,9 @@
 function InputSelect({ label, options, value, onChange, id }: InputSelectProps) {
   return (
     <div>
-      <label className="text-gray-600 font-medium mb-1 pr-2" htmlFor={id}>{label}</label>
+      <label className="text-gray-600 font-medium mb-1 pr-2" htmlFor={id}>
+        {label}
+      </label>
       <select
         value={value}
         onChange={onChange}

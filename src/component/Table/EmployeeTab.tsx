@@ -8,18 +8,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
 
-function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
+function EmployeeTab({ searchQuery, currentEmployees }: EmployeeTabProps) {
 
-// 1. Gérer la configuration du tri (ne pas réinitialiser au rendu)
+  //Manage sorting configuration
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: "ascending" | "descending" | null;
   }>({
-    key: "firstname", // Initialiser avec une colonne par défaut
-    direction: "ascending", // Direction par défaut
+    key: "firstname",
+    direction: "ascending",
   });
 
-  // Filtrer par recherche
+  //Filter by search
   const filteredEmployees = currentEmployees.filter((employee) => {
     return (
       employee.firstname.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,22 +33,26 @@ function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
     );
   });
 
-  // 3. Fonction de tri
+  //Sort function
   const requestSort = (key: keyof Employee) => {
     let direction: "ascending" | "descending" | null = "ascending";
 
-    // Si la colonne cliquée est déjà triée, inverser la direction
+    //If the clicked column is already sorted, reverse the direction
     if (sortConfig.key === key && sortConfig.direction === "ascending") {
       direction = "descending";
-    } else if (sortConfig.key === key && sortConfig.direction === "descending") {
-      direction = null; // Réinitialiser si on clique sur la même colonne
+    } else if (
+      sortConfig.key === key &&
+      sortConfig.direction === "descending"
+    ) {
+      direction = null;
     }
 
-    // Mettre à jour la configuration du tri
+    //Update sorting configuration
     setSortConfig({ key, direction });
   };
 
-  // Appliquer le tri
+  //Apply sorting
+  //Clone the filtered list of employees
   const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     if (sortConfig.direction === null) return 0;
 
@@ -106,9 +110,13 @@ function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
               >
                 <td className="py-4 px-2">{employee.firstname}</td>
                 <td className="py-4 px-2">{employee.lastname}</td>
-                <td className="py-4 px-2">{format(employee.startDate, "MM-dd-yyyy")}</td>
+                <td className="py-4 px-2">
+                  {format(employee.startDate, "MM-dd-yyyy")}
+                </td>
                 <td className="py-4 px-2">{employee.department}</td>
-                <td className="py-4 px-2">{format(employee.dateOfBirth, "MM-dd-yyyy")}</td>
+                <td className="py-4 px-2">
+                  {format(employee.dateOfBirth, "MM-dd-yyyy")}
+                </td>
                 <td className="py-4 px-2">{employee.street}</td>
                 <td className="py-4 px-2">{employee.city}</td>
                 <td className="py-4 px-2">{employee.state}</td>
@@ -124,7 +132,7 @@ function EmployeeTab({ searchQuery, currentEmployees } : EmployeeTabProps) {
 
 interface EmployeeTabProps {
   searchQuery: string;
-  currentEmployees: Employee[]
+  currentEmployees: Employee[];
 }
 
 export default EmployeeTab;

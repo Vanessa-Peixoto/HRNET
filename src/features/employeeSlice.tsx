@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import employeeData from '../data/employee.json';
+import employeeData from "../data/employee.json";
 
 const initialState: EmployeeProps = {
   employee: employeeData,
@@ -16,20 +16,20 @@ const employeeSlice = createSlice({
 });
 
 interface EmployeeProps {
-    employee: Employee[];
+  employee: Employee[];
 }
 
 export interface Employee {
-    firstname: string;
-    lastname: string;
-    dateOfBirth: string;
-    startDate: string; 
-    street: string;
-    city: string;
-    state: string;
-    zipCode: string | number; 
-    department: string;
-  }
+  firstname: string;
+  lastname: string;
+  dateOfBirth: string;
+  startDate: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string | number;
+  department: string;
+}
 
 export const { addEmployee } = employeeSlice.actions;
 export default employeeSlice.reducer;

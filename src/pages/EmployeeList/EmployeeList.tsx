@@ -8,35 +8,36 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
 function EmployeeList() {
-  // 1. Récupérer les employés depuis le store Redux
+
+  //Retrieve employees from the Redux store
   const employees = useSelector((state: RootState) => state.employee.employee);
 
-  // 2. États pour la pagination et la recherche
+  //States for pagination and search
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerPage, setEntriesPerPage] = useState(10);
 
-  // 3. Handler pour changer la page
+  //Handler to change the page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  // 4. Handler pour changer le nombre d'entrées par page
+  //Handler to change the number of entries per page
   const handleEntriesPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setEntriesPerPage(Number(event.target.value));
-    setCurrentPage(1); // Réinitialiser à la première page lors du changement du nombre d'entrées par page
+    setCurrentPage(1);
   };
 
-  // 5. Calculer l'index de début des employés pour la pagination
+  //Calculate employee start index for pagination
   const startIndex = (currentPage - 1) * entriesPerPage;
   const currentEmployees = employees.slice(
     startIndex,
     startIndex + entriesPerPage
   );
 
-  // 6. Options de pagination (combien d'entrées par page)
+  //Pagination options (how many entries per page)
   const entriesOptions = [
     { label: "10", value: "10" },
     { label: "25", value: "25" },
@@ -60,33 +61,34 @@ function EmployeeList() {
         <h2 className="text-xl font-semibold mb-4">Current Employees</h2>
 
         <div className="container mx-auto px-4">
-        <div className="flex justify-between min-w-full p-4">
-          <div className="flex">
-            <InputSelect
-              label="Show"
-              options={entriesOptions}
-              value={String(entriesPerPage)}
-              onChange={handleEntriesPerPageChange}
-              id="show"
-            />
-            <span className="flex items-center pl-2 text-gray-600">entries</span>
+          <div className="flex justify-between min-w-full p-4">
+            <div className="flex">
+              <InputSelect
+                label="Show"
+                options={entriesOptions}
+                value={String(entriesPerPage)}
+                onChange={handleEntriesPerPageChange}
+                id="show"
+              />
+              <span className="flex items-center pl-2 text-gray-600">
+                entries
+              </span>
+            </div>
+
+            <SearchBar onSearch={setSearchQuery} />
           </div>
 
-          <SearchBar onSearch={setSearchQuery} />
-        </div>
+          <EmployeeTab
+            searchQuery={searchQuery}
+            currentEmployees={currentEmployees}
+          />
 
-        <EmployeeTab
-          searchQuery={searchQuery}
-          currentEmployees={currentEmployees}
-        />
-
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          totalEntries={employees.length}
-          entriesPerPage={entriesPerPage}
-        />
-
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            totalEntries={employees.length}
+            entriesPerPage={entriesPerPage}
+          />
         </div>
       </main>
     </>

@@ -19,9 +19,15 @@ import { getDepartmentOptions } from "../../services/getDepartmentOptions";
 import { RootState } from "../../app/store";
 import useForm from "../../hooks/useForm";
 
-function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
+function EmployeeForm({ onFormSubmit }: EmployeeFormProps) {
+
+  //Initializes the dispatch object to send actions to the Redux store
   const dispatch = useDispatch();
+  
+  //Retrieves the current state of the form from the store
   const formState = useSelector((state: RootState) => state.form);
+
+  //Retrieve function handleSubmitform from our custom hook
   const { handleSubmitForm } = useForm();
 
   const statesOptions = getStateOptions();
@@ -52,44 +58,35 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
         className="bg-white p-6 rounded-lg shadow-md space-y-6 max-w-lg mx-auto"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
-            <InputField
-              id="firstname"
-              label="First Name"
-              type="text"
-              value={formState.firstname}
-              onChange={(e) => dispatch(updateFirstname(e.target.value))}
-            />
-         
-          
-            <InputField
-              id="lastname"
-              label="Last Name"
-              type="text"
-              value={formState.lastname}
-              onChange={(e) => dispatch(updateLastname(e.target.value))}
-            />
-          
-         
-            <InputDatePicker
-              id="dateOfBirth"
-              label="Date of Birth"
-              value={formState.dateOfBirth}
-              onChange={(date) =>
-                dispatch(updateDateOfBirth(date?.toISOString()))
-              }
-            />
-         
-        
-            <InputDatePicker
-              id="startDate"
-              label="Start Date"
-              value={formState.startDate}
-              onChange={(date) =>
-                dispatch(updateStartDate(date?.toISOString()))
-              }
-            />
-        
+          <InputField
+            id="firstname"
+            label="First Name"
+            type="text"
+            value={formState.firstname}
+            onChange={(e) => dispatch(updateFirstname(e.target.value))}
+          />
+
+          <InputField
+            id="lastname"
+            label="Last Name"
+            type="text"
+            value={formState.lastname}
+            onChange={(e) => dispatch(updateLastname(e.target.value))}
+          />
+
+          <InputDatePicker
+            id="dateOfBirth"
+            label="Date of Birth"
+            value={formState.dateOfBirth}
+            onChange={(date) => dispatch(updateDateOfBirth(date?.toISOString()))}
+          />
+
+          <InputDatePicker
+            id="startDate"
+            label="Start Date"
+            value={formState.startDate}
+            onChange={(date) => dispatch(updateStartDate(date?.toISOString()))}
+          />
         </div>
 
         <fieldset className="border-t border-gray-200 mt-4 pt-4">
@@ -128,15 +125,15 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
           </div>
         </fieldset>
         <fieldset className="border-t border-gray-200 mt-4 pt-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-          <InputSelect
-            label="Department"
-            options={departmentsOptions}
-            value={formState.department}
-            onChange={(e) => dispatch(updateDepartment(e.target.value))}
-            id="department"
-          />
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+            <InputSelect
+              label="Department"
+              options={departmentsOptions}
+              value={formState.department}
+              onChange={(e) => dispatch(updateDepartment(e.target.value))}
+              id="department"
+            />
+          </div>
         </fieldset>
         <div className="text-center">
           <Button type="submit">Save</Button>
@@ -147,7 +144,7 @@ function EmployeeForm( { onFormSubmit } : EmployeeFormProps) {
 }
 
 interface EmployeeFormProps {
-    onFormSubmit: () => void;
+  onFormSubmit: () => void;
 }
 
 export default EmployeeForm;

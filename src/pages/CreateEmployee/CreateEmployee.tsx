@@ -4,13 +4,11 @@ import { useState } from "react";
 import { Modal } from "@vanessapeixoto/my-modal";
 
 function CreateEmployee() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const handleFormSubmit = () => {
-        setIsModalOpen(true);
-    }
-
+  const handleFormSubmit = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -29,9 +27,13 @@ function CreateEmployee() {
 
         <EmployeeForm onFormSubmit={handleFormSubmit} />
 
-        {isModalOpen && 
-        <Modal message="Employee crée" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
-        }
+        {isModalOpen && (
+          <Modal
+            message="Employee crée"
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )}
       </main>
     </>
   );

@@ -28,12 +28,12 @@ const mockEmployees = [
   },
 ];
 
-// Fonction utilitaire pour rendre le composant avec les données mockées
+//Render the component with mocked data
 const renderEmployeeTab = (props = {}) => {
   const defaultProps = {
     searchQuery: "",
     currentEmployees: mockEmployees,
-    ...props, // Permet d'écraser les valeurs par défaut si nécessaire
+    ...props,
   };
 
   render(
@@ -47,7 +47,6 @@ describe("EmployeeTab", () => {
   it("should render the tab with data", () => {
     renderEmployeeTab();
 
-    // Vérifie si les données sont rendues correctement dans le tableau
     expect(screen.getByText(/Alice/)).toBeInTheDocument();
     expect(screen.getByText(/Martin/)).toBeInTheDocument();
     expect(screen.getByText(/Engineering/)).toBeInTheDocument();

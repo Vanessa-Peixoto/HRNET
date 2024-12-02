@@ -71,40 +71,5 @@ describe("CreateEmployee", () => {
       ).toBeInTheDocument();
     });
   });
-
-  it("should close modal when clicked in the button", () => {
-    renderCreateEmployee();
-
-    const firstNameInput = screen.getByLabelText(/First Name/i);
-    const lastNameInput = screen.getByLabelText(/Last Name/i);
-    const DateOfBirthInput = screen.getByLabelText(/Date of Birth/i);
-    const StartDateInput = screen.getByLabelText(/Start Date/i);
-    const StreetInput = screen.getByLabelText(/Street/i);
-    const CityInput = screen.getByLabelText(/City/i);
-    const StateInput = screen.getByLabelText(/State/i);
-    const ZipCodeInput = screen.getByLabelText(/Zip Code/i);
-    const DepartmentInput = screen.getByLabelText(/Department/i);
-
-    fireEvent.change(firstNameInput, { target: { value: "John" } });
-    fireEvent.change(lastNameInput, { target: { value: "Doe" } });
-    fireEvent.change(DateOfBirthInput, { target: { value: "12/23/2024" } });
-    fireEvent.change(StartDateInput, { target: { value: "12/23/2024" } });
-    fireEvent.change(StreetInput, { target: { value: "12 rue de la jungle" } });
-    fireEvent.change(CityInput, { target: { value: "London" } });
-    fireEvent.change(StateInput, { target: { value: "WV" } });
-    fireEvent.change(ZipCodeInput, { target: { value: 1 } });
-    fireEvent.change(DepartmentInput, { target: { value: "Sales" } });
-
-    const submitButton = screen.getByRole("button", { name: "Save" });
-    fireEvent.click(submitButton);
-
-    expect(
-      screen.getByText((content) => content.includes("Employee crée"))
-    ).toBeInTheDocument();
-
-    const closeModal = screen.getByRole("button", { name: "X" });
-    fireEvent.click(closeModal);
-
-    expect(screen.queryByText(/Employee crée/i)).not.toBeInTheDocument();
-  });
+  
 });

@@ -1,12 +1,14 @@
 # Project 14 - HRNET
 
-## Project (fictional situation)
+## Overview  
 
-You work for the technology department of a large financial company, WealthHealth.
-This company uses an internal web application, called HRnet, which manages employee records.
-The app is old and uses jQuery on the front end, leading to considerable bugs and increased complaints internally.
-Management is FINALLY going to let us update HRnet and convert it to React!
-You will be one of the first developers to start converting code!
+HRnet is a modern web application designed to streamline employee record management for WealthHealth. It replaces the outdated jQuery-based application with a more robust, maintainable, and efficient React-based solution.  
+
+## Features  
+- Employee record creation with validation.  
+- Interactive employee list with sorting and filtering capabilities.  
+- Fully styled with Tailwind CSS.  
+- Modular design with React, Redux Toolkit, and TypeScript.  
 
 ## Installation
 
@@ -20,13 +22,14 @@ You will be one of the first developers to start converting code!
 - React
 - React Router
 - Redux Toolkit
+- React-datepicker 
 - TypeScript
 - Tailwind CSS
 - Vitest
 
 ### Installation process :
 
-  -> Clone the repository
-  -> Install all dependencies for the project : `npm install`
-  -> Install the plugin (modal) : `npm install @vanessapeixoto/my-modal`
-  -> Launch : `npm run start`
+- Clone the repository
+- Install all dependencies : `npm install`
+- Install the plugin (modal) : `npm install @vanessapeixoto/my-modal`
+- Run the project : `npm run start`
